@@ -1,9 +1,10 @@
 import React from 'react';
+import error from '../../images/error.jpg';
 
 const PageNotFound = () => {
     return (
-        <div className='min-h-screen'>
-            <h2>404 Page not found</h2>
+        <div className='min-h-screen w-full flex justify-center items-center'>
+            <img className='w-3/4 h-[300px] md:h-[600px]' src={error} alt="" />
         </div>
     );
 };
