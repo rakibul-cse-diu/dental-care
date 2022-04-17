@@ -6,7 +6,7 @@ import './Home.css';
 
 const Home = () => {
     return (
-        <div className='mb-10'>
+        <div className='mb-10 min-h-screen'>
             <div className='top-banner flex flex-col-reverse md:flex-row justify-center items-center mb-10'>
                 <div className='w-full md:w-1/2 text-white'>
                     <h2 className='text-3xl font-bold mb-2]'>"Haque Dental Care"</h2>
