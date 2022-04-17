@@ -1,0 +1,37 @@
+[
+    {
+        "id": "r01",
+        "name": "Kallie G",
+        "img": "https://images-na.ssl-images-amazon.com/images/S/amazon-avatars-global/741503e8-a4ed-4855-994a-3f5c783f52c7._CR69,0,362,362_SX460_.jpg",
+        "review": "Great experience as a first timer. I barely waited to be helped when I checked in. The staff and Dr. Tipu were all very friendly and helpful. I especially loved how Dr. Tipu really took his time to explain my conditions with me as well as my treatment options. I had a great visit.",
+        "rating": 5
+    },
+    {
+        "id": "r02",
+        "name": "Grossman",
+        "img": "https://images-na.ssl-images-amazon.com/images/S/amazon-avatars-global/e234e759-ec66-48a0-8d42-3972f2e4dc90._CR0,0,500,500_SX460_.jpg",
+        "review": "Very good. Visit every 3 months for check up.",
+        "rating": 4
+    },
+    {
+        "id": "r03",
+        "name": "Joseph Pitt",
+        "img": "https://images-na.ssl-images-amazon.com/images/S/amazon-avatars-global/35f305fb-562f-4347-bece-cb5e561fb620._CR21,0,675,675_SX460_.jpg",
+        "review": "very good doctor very nice.",
+        "rating": 4
+    },
+    {
+        "id": "r04",
+        "name": "Garcia",
+        "img": "https://images-na.ssl-images-amazon.com/images/S/amazon-avatars-global/31a0c6d2-f089-4c93-925e-7b8fbd8389cf._CR0,0,1080,1080_SX460_.jpg",
+        "review": "Excellent service.",
+        "rating": 3
+    },
+    {
+        "id": "r05",
+        "name": "Krista Kitty",
+        "img": "https://images-na.ssl-images-amazon.com/images/S/amazon-avatars-global/09bb329d-f298-4319-a9ca-7c85254ce165._CR0,13,306,306_UX460_.jpg",
+        "review": "Very good doctor and extremely polite and caring.",
+        "rating": 4
+    }
+]

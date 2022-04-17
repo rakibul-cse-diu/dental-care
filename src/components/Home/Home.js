@@ -1,5 +1,6 @@
 import React from 'react';
 import doctor from '../../images/doctor.png';
+import Reviews from '../Reviews/Reviews';
 import Services from '../Services/Services';
 
 import './Home.css';
@@ -18,6 +19,7 @@ const Home = () => {
                 </div>
             </div>
             <Services></Services>
+            <Reviews></Reviews>
         </div>
     );
 };
