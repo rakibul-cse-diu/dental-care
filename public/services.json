@@ -4,7 +4,7 @@
         "name": "Scaling and polishing",
         "price": 120,
         "description": "Scaling is a common dental procedure to remove hardened plaque called calculus which causes teeth damage and gum diseases. As this procedure may leave the teeth rough, polishing is followed to smooth them out.",
-        "img": "https://i.ibb.co/MhDK6k2/dentalimplants-1.jpg"
+        "img": "https://i.ibb.co/0Qp5HJG/teeth-scaling-polishing.jpg"
     },
     {
         "id": 2,
@@ -18,6 +18,6 @@
         "name": "Dental implants",
         "price": 220,
         "description": "A dental implant is a metal post that replaces the root portion of a missing tooth. An artificial tooth (crown) is placed on an extension of the post (abutment) on the dental implant.",
-        "img": "https://i.ibb.co/0Qp5HJG/teeth-scaling-polishing.jpg"
+        "img": "https://i.ibb.co/MhDK6k2/dentalimplants-1.jpg"
     }
 ]
