@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSignInWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../firebase.init';
@@ -22,6 +22,11 @@ const Login = () => {
         error,
     ] = useSignInWithEmailAndPassword(auth);
 
+    useEffect(() => {
+        if (user || googleUser) {
+            return navigate(from, { replace: true });
+        }
+    }, [user, googleUser, navigate, from])
 
     if (error || googleError) {
         return (
@@ -34,9 +39,6 @@ const Login = () => {
         return <div className=' flex justify-center items-center bg-[#F4EFEC]'>
             <img src={spinner} alt="" />
         </div>;
-    }
-    if (user || googleUser) {
-        return navigate(from, { replace: true });
     }
 
 
