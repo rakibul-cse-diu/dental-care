@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars, faXmark } from '@fortawesome/free-solid-svg-icons';
 import CustomLink from '../CustomLink/CustomLink';
@@ -9,7 +9,14 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 
 const Header = () => {
     const [open, setOpen] = useState(false);
-    const [user, loading, error] = useAuthState(auth);
+    const [user] = useAuthState(auth);
+
+    const navigate = useNavigate();
+
+    const handleSignOut = () => {
+        signOut(auth)
+        navigate("/")
+    }
     return (
         <div className='flex justify-between items-center bg-[#1F2B6C] py-3 px-5'>
             <div>
@@ -29,7 +36,7 @@ const Header = () => {
                 <CustomLink to="/about">About</CustomLink>
                 {
                     user ?
-                        <button className='btn px-6 py-1 mt-5 md:mt-0 bg-[#BFD2F8] text-[#1F2B6C] rounded-[50px]' onClick={() => signOut(auth)}>Sign Out</button> :
+                        <button className='btn px-6 py-1 mt-5 md:mt-0 bg-[#BFD2F8] text-[#1F2B6C] rounded-[50px]' onClick={handleSignOut}>Sign Out</button> :
                         <button className='btn px-6 py-1 mt-5 md:mt-0 bg-[#BFD2F8] text-[#1F2B6C] rounded-[50px]'><Link to="/login">Login</Link></button>
                 }
             </nav>

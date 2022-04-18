@@ -1,13 +1,19 @@
 import React, { useState } from 'react';
-import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
-import { Link } from 'react-router-dom';
+import { useSignInWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../firebase.init';
 import googleLogo from '../../images/Google-logo.png';
+import spinner from '../../images/spinner.gif';
 
 const Login = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [signInWithGoogle, googleUser, googleLoading, googleError] = useSignInWithGoogle(auth);
 
+    const navigate = useNavigate();
+    const location = useLocation();
+
+    const from = location.state?.from?.pathname || "/";
 
     const [
         signInWithEmailAndPassword,
@@ -17,22 +23,20 @@ const Login = () => {
     ] = useSignInWithEmailAndPassword(auth);
 
 
-    if (error) {
+    if (error || googleError) {
         return (
-            <div className='min-h-screen'>
-                <p>Error: {error.message}</p>
+            <div className='min-h-screen text-red-500 text-center'>
+                <p>Error: {error?.message || googleError?.message}</p>
             </div>
         );
     }
-    if (loading) {
-        return <div className='min-h-screen'><p>Loading...</p></div>;
+    if (loading || googleLoading) {
+        return <div className=' flex justify-center items-center bg-[#F4EFEC]'>
+            <img src={spinner} alt="" />
+        </div>;
     }
-    if (user) {
-        return (
-            <div className='min-h-screen'>
-                <p>Signed In User: {user.email}</p>
-            </div>
-        );
+    if (user || googleUser) {
+        return navigate(from, { replace: true });
     }
 
 
@@ -70,7 +74,7 @@ const Login = () => {
                     <div className='w-[80px] h-[3px] bg-slate-200'></div>
                 </div>
                 <div>
-                    <button className='my-5 px-6 py-1 bg-[#BFD2F8] text-[#1F2B6C] hover:bg-[#1F2B6C] hover:text-[#BFD2F8] duration-500 text-lg font-semibold cursor-pointer rounded-sm'>
+                    <button onClick={() => signInWithGoogle()} className='my-5 px-6 py-1 bg-[#BFD2F8] text-[#1F2B6C] hover:bg-[#1F2B6C] hover:text-[#BFD2F8] duration-500 text-lg font-semibold cursor-pointer rounded-sm'>
                         <img className='inline mr-3' src={googleLogo} alt="" height={30} width={30} />
                         Login with Google
                     </button>

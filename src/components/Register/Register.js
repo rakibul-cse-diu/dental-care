@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { useCreateUserWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import googleLogo from '../../images/Google-logo.png';
+import spinner from '../../images/spinner.gif';
 import auth from '../../firebase.init';
 
 const Register = () => {
@@ -9,6 +10,7 @@ const Register = () => {
     const [password, setPassword] = useState('');
     const [confrimPassword, setConfrimPassword] = useState('');
     const [errPass, setErrPass] = useState(false);
+    const [signInWithGoogle, googleUser, googleLoading, googleError] = useSignInWithGoogle(auth);
 
     const [
         createUserWithEmailAndPassword,
@@ -17,23 +19,25 @@ const Register = () => {
         error,
     ] = useCreateUserWithEmailAndPassword(auth);
 
+    const navigate = useNavigate();
+    const location = useLocation();
 
-    if (error) {
+    const from = location.state?.from?.pathname || "/";
+
+    if (error || googleError) {
         return (
-            <div className='min-h-screen'>
-                <p>Error: {error.message}</p>
+            <div className='min-h-screen text-red-500 text-center'>
+                <p>Error: {error?.message || googleError?.message}</p>
             </div>
         );
     }
-    if (loading) {
-        return <div className='min-h-screen'><p>Loading...</p></div>;
+    if (loading || googleLoading) {
+        return <div className=' flex justify-center items-center bg-[#F4EFEC]'>
+            <img src={spinner} alt="" />
+        </div>;
     }
-    if (user) {
-        return (
-            <div className='min-h-screen mt-10 text-center text-xl'>
-                <p>Registered User successfully. You can now login...</p>
-            </div>
-        );
+    if (user || googleUser) {
+        return navigate(from, { replace: true });
     }
 
 
@@ -58,8 +62,9 @@ const Register = () => {
         } else {
             setErrPass(true);
         }
-
     }
+
+
     return (
         <div className='min-h-screen flex flex-col justify-center items-center'>
             <h2 className='text-lg font-medium'>Register a new account</h2>
@@ -83,7 +88,7 @@ const Register = () => {
                     <div className='w-[80px] h-[3px] bg-slate-200'></div>
                 </div>
                 <div>
-                    <button className='my-5 px-6 py-1 bg-[#BFD2F8] text-[#1F2B6C] hover:bg-[#1F2B6C] hover:text-[#BFD2F8] duration-500 text-lg font-semibold cursor-pointer rounded-sm'>
+                    <button onClick={() => signInWithGoogle()} className='my-5 px-6 py-1 bg-[#BFD2F8] text-[#1F2B6C] hover:bg-[#1F2B6C] hover:text-[#BFD2F8] duration-500 text-lg font-semibold cursor-pointer rounded-sm'>
                         <img className='inline mr-3' src={googleLogo} alt="" height={30} width={30} />
                         Login with Google
                     </button>

@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 
 const Service = (props) => {
     const { name, price, img, description } = props.service;
-    console.log(props.service);
     return (
         <div className='flex flex-col justify-center items-center border-[1px] border-gray-200 pb-3 duration-700 hover:scale-105'>
             <img className='w-full' src={img} alt="" />
