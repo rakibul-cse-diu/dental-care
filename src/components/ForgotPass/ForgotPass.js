@@ -20,7 +20,7 @@ const ForgotPass = () => {
         );
     }
     if (sending) {
-        return <p>Sending...</p>;
+        return <div className='flex justify-center items-center min-h-screen'><p>Sending...</p></div>;
     }
 
     const handleEmail = (event) => {
