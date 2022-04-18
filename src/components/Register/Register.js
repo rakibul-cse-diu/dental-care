@@ -10,7 +10,7 @@ const Register = () => {
     const [password, setPassword] = useState('');
     const [confrimPassword, setConfrimPassword] = useState('');
     const [errPass, setErrPass] = useState(false);
-    const [signInWithGoogle, googleUser, googleLoading, googleError] = useSignInWithGoogle(auth);
+    const [signInWithGoogle, googleUser, googleLoading, googleError] = useSignInWithGoogle(auth, { sendEmailVerification: true });
 
     const [
         createUserWithEmailAndPassword,
