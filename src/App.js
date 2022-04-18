@@ -3,6 +3,7 @@ import './App.css';
 import About from './components/About/About';
 import Blogs from './components/Blogs/Blogs';
 import CheckOut from './components/CheckOut/CheckOut';
+import ForgotPass from './components/ForgotPass/ForgotPass';
 import Home from './components/Home/Home';
 import Login from './components/Login/Login';
 import PageNotFound from './components/PageNoFound/PageNotFound';
@@ -12,6 +13,10 @@ import Footer from './components/Shared/Footer/Footer';
 import Header from './components/Shared/Header/Header';
 
 function App() {
+
+  // 7,8,9,10,11,12
+  // bonus 2, 5, 6, 7
+
   return (
     <div>
       <Header></Header>
@@ -22,6 +27,7 @@ function App() {
         <Route path='/blogs' element={<Blogs></Blogs>}></Route>
         <Route path='/about' element={<About></About>}></Route>
         <Route path='/login' element={<Login></Login>}></Route>
+        <Route path='/resetpassword' element={<ForgotPass></ForgotPass>}></Route>
         <Route path='/register' element={<Register></Register>}></Route>
         <Route path='*' element={<PageNotFound></PageNotFound>}></Route>
       </Routes>
